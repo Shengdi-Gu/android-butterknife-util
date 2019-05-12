@@ -1,0 +1,38 @@
+<idea-plugin version="2">
+	<id>com.gusd.android.plugin.butterknifecodeutil</id>
+	<name>Android ButterKnife Util</name>
+	<version>1.7.0-SNAPSHOT</version>
+	<vendor email="461842166@qq.com" url="https://github.com/Shengdi-Gu">gusd</vendor>
+
+	<description><![CDATA[
+      Plugin for generating ButterKnife injections from selected layout XMLs in activities/fragments/adapters.
+      ]]></description>
+
+	<change-notes></change-notes>
+
+	<idea-version since-build="123.72"/>
+
+	<!-- please see http://confluence.jetbrains.net/display/IDEADEV/Plugin+Compatibility+with+IntelliJ+Platform+Products
+                   on how to target different products -->
+	<depends>com.intellij.modules.lang</depends>
+
+	<actions>
+		<action id="AddInjectionsAction"
+			class="com.avast.android.butterknifezelezny.InjectAction"
+			text="Generate _Butterknife Injections"
+			description="Plugin for generating ButterKnife injections from selected layout XMLs in activities/fragments/adapters">
+
+			<keyboard-shortcut
+				keymap="$default"
+				first-keystroke="shift control B"/>
+			<add-to-group group-id="GenerateGroup"/>
+			<!-- <add-to-group group-id="ProjectViewPopupMenu" /> file pop-up -->
+		</action>
+	</actions>
+
+	<extensions defaultExtensionNs="com.intellij">
+        <applicationConfigurable instance="com.avast.android.butterknifezelezny.Settings" />
+		<codeInsight.lineMarkerProvider language="JAVA"
+			implementationClass="com.avast.android.butterknifezelezny.navigation.NavigationMarkerProvider" />
+	</extensions>
+</idea-plugin>
